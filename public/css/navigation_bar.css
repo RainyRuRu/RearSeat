@@ -1,0 +1,19 @@
+a.navbar-brand {
+    padding-top: 7px; 
+    padding-bottom: 5px; 
+    padding-right: 5px;"
+}
+
+p#title {
+    margin-left: 2px;
+}
+
+button#btn_signin,
+button#btn_signup {
+    margin-right: 10px;
+}
+
+a#user {
+	padding-top: 7px; 
+	padding-bottom: 0px;
+}

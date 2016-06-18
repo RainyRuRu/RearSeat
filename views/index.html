@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'header.html' with {'jsfile' : 'index.js', 'cssfile' : 'index.css'} %}
+    </head>
+    <body>
+        {% include 'navigation_bar.html' %}
+        <div id="slogan">
+            <p>Share Seat, Make Friends</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                      <input type="text" class="form-control">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">找車位<span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li><a href="#">找車位</a></li>
+                                <li><a href="#">分享車位</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default">GO!</button>
+        </div>
+
+    </body>
+</html>

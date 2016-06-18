@@ -1,0 +1,11 @@
+nav.navbar {
+	margin-bottom: 0px;
+}
+
+div#slogan {
+	height: 450px;
+	width: 100vw;
+    background-image: url("../img/rearseat_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}

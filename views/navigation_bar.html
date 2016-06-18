@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+               <img id="rearseat_icon" src="/img/rearseat_png.png" height="35">
+            </a>
+            <a href="/">
+                <p id="title" class="navbar-text">Rear Seat</p>
+            </a>
+        </div>
+        <div class="navbar-right">
+            {% if user_id == null %}
+                <button id="btn_signin" type="button" class="btn btn-default navbar-btn">Sign in</button>
+                <button id="btn_signup" type="button" class="btn btn-primary navbar-btn">Sign up</button>
+            {% else %}
+                <ul class="nav navbar-nav">
+                    <li><a href="javascript:;">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Request
+                    </a></li>
+                    <li><a id="user" href="">
+                        <img id="user_icon" src="/img/rearseat_png.png" height="35">
+                        <span class="dropdown"><span class="caret"></span></span>
+                    </a></li>
+                </ul>
+                
+            {% endif %}
+        </div>
+    </div>
+
+</nav>

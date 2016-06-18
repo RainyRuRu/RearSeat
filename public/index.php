@@ -5,7 +5,7 @@ $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
 $twig = new Twig_Environment($loader);
 
 $param = [
-	"user" => 'Linda'
+	"user_id" => '1234'
 ];
 
-echo $twig->render('test.twig.html', $param);
+echo $twig->render('index.html', $param);
