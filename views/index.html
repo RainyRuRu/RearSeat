@@ -5,24 +5,92 @@
     </head>
     <body>
         {% include 'navigation_bar.html' %}
-        <div id="slogan">
-            <p>Share Seat, Make Friends</p>
+        <div id="title_filed">
+            <p id="slogan">Share Seat, Make Friends</p>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="input-group">
-                      <input type="text" class="form-control">
+                <div class="col-lg-5 col-lg-offset-3">
+                    <div id="search_field" class="input-group">
+                        <input type="text" class="form-control" placeholder="高師大燕巢校區">
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">找車位<span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <button id="btn_select" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">找車位
+                                <span class="caret" style="margin-left: 5px;"></span>
+                            </button>
+                            <ul id="list_select" class="dropdown-menu dropdown-menu-right" role="menu">
                                 <li><a href="#">找車位</a></li>
                                 <li><a href="#">分享車位</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-1">
+                    <button type="button" class="btn btn-default">出發！</button>
+                </div>
             </div>
-            <button type="button" class="btn btn-default">GO!</button>
+            <div id="menu" class="row">
+                <div class="menu_child col-lg-2 col-lg-offset-2">
+                    <img src="/img/icon_moto.png" height="70">
+                    <span class="menu_child_text">找車位</span>
+                </div>
+                <div class="menu_child col-lg-2 col-lg-offset-1">
+                    <img src="/img/icon_car.png" height="70">
+                    <span class="menu_child_text">分享車位</span>
+                </div>
+                <div class="menu_child col-lg-2 col-lg-offset-1">
+                    <img src="/img/icon_write.png" height="70">
+                    <span class="menu_child_text">發起需求</span>
+                </div>
+            </div>
         </div>
-
+        <div id="list_field" class="row">
+            <div class="col-lg-5 col-lg-offset-1">
+                <div class="list">
+                    <div class="list_titlefield">
+                        <span class="list_title">有人在找...</span>
+                        <span class="list_more" id="find_more">>>>more</span>
+                    </div>
+                    <div class="list_content">
+                        <ul class="list-group">
+                            <li class="list-group-item list_item">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <img id="rearseat_icon" src="/img/test.jpg" height="60">
+                                    </div>
+                                    <div class="col-lg-10 list_item_text">
+                                        2016/06/19 14:00</br>
+                                        高師大燕巢校區
+                                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                        高師大和平校區
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="list">
+                    <div class="list_titlefield">
+                        <span class="list_title">有人分享...</span>
+                        <span class="list_more" id="share_more">>>>more</span>
+                    </div>
+                    <div class="list_content">
+                        <ul class="list-group">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            CopyRight © 2016 Rainy & Linda 
+        </div>
     </body>
 </html>

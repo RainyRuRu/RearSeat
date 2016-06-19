@@ -13,7 +13,8 @@ button#btn_signup {
     margin-right: 10px;
 }
 
-a#user {
-	padding-top: 7px; 
-	padding-bottom: 0px;
+li#user {
+    margin-top: 7px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
