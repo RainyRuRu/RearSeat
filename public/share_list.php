@@ -11,10 +11,7 @@ session_start();
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
 $twig = new Twig_Environment($loader);
 
-$request = $_GET['request'];
-$keyword = $_GET['keyword'];
-
-$result = SeatModel::searchSeatByKeyword($request, $keyword, 0);
+$result = SeatModel::searchSeatByRequest(1);
 
 $data = [];
 
@@ -25,19 +22,13 @@ foreach ($result as $seat) {
     array_push($data, $seat);
 }
 
-if ($request == 0) {
-    $page = "searchFind";
-} else {
-    $page = "searchShare";
-}
-
 $param = [
     "user" => [
         'id' => UserSession::getUserId(),
         'photo' => UserSession::getUserPhoto(),
     ],
     "data" => $data,
-    "page" => $page
+    "page" => "share"
 ];
 
 echo $twig->render('list.html', $param);

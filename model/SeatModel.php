@@ -18,8 +18,6 @@ class SeatModel{
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $result = static::splitData($result, $page);
-
         return $result;
     }
 

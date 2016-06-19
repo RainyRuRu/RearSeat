@@ -35,7 +35,7 @@ function goTheRequestPage(request_id) {
 
 function goSearch() {
     var keyword = document.forms["search_form"]["keyword"].value;
-    var request = document.getElementById("select_option").innerHTML == "找車位" ? 0 : 1;
+    var request = document.getElementById("select_option").innerHTML == "找車位" ? 1 : 0;
     window.location.assign("search.php?keyword=" + keyword + "&request=" + request);
     return false;
 }
