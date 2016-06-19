@@ -5,5 +5,69 @@
     </head>
     <body>
         {% include 'navigation_bar.html' %}
+        <div class="container">
+            <div class="row mainContainer">
+                <div class="col-lg-3">
+                    <div>
+                        <img id="user_icon" src='{{ "data:image/png;base64, " ~ user["photo"] }}' height="250">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 userName">
+                            {{data['profile']['name']}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <center>
+                            <img src='img/happy.png' height="40">
+                            </center>
+                        </div>
+                        <div class="col-lg-4">
+                            <center>
+                            <img src='img/smile.png' height="40">
+                            </center>
+                        </div>
+                        <div class="col-lg-4">
+                            <center>
+                            <img src='img/confused.png' height="40">
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 scorefont">
+                            <center>
+                            <span>{{data['score']['good'] | length}}</span>
+                            </center>
+                        </div>
+                        <div class="col-lg-4 scorefont">
+                            <center>
+                            <span>{{data['score']['soso'] | length}}</span>
+                            </center>
+                        </div>
+
+                        <div class="col-lg-4 scorefont">
+                            <center>
+                            <span>{{data['score']['bad'] | length}}</span>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-lg-offset-1">
+                    <div class="arrow_box">
+                        <center>
+                            <div id="title">我要找車位</div>
+                        </center>
+                        <div id="content">
+                            2016/12/3 12:00:00 出發</br>
+                            A 往 B</br>
+                            報酬是一杯錫蘭紅茶</br>
+                            另外...</br>
+                            多話
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
