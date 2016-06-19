@@ -1,36 +1,37 @@
 <?php
 namespace RearSeat;
 
-class Session
+class UserSession
 {
+
     public static function getUserId()
     {
-        return Session::has('user_id') ? Session::get('songNum') : null;
+        return isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
     }
 
     public static function setUserId($id)
     {
-        Session::put('user_id', $id);
+        $_SESSION['user_id'] = $id;
     }
 
     public static function removeUserId()
     {
-        Session::forget('user_id');
+        unset($_SESSION['user_id']);
     }
 
     public static function getUserPhoto()
     {
-        return Session::has('user_phto') ? Session::get('user_phto') : null;
+        return isset($_SESSION['user_photo']) ? $_SESSION['user_photo'] : null;
     }
-    
+
     public static function setUserPhoto($photo)
     {
-        Session::put('user_phto', $photo);
+        $_SESSION['user_photo'] = $photo;
     }
 
     public static function removeUserPhoto()
     {
-        Session::forget('user_phto');
+        unset($_SESSION['user_photo']);
     }
 
     public static function removeAllUserSession()

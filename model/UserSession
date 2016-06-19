@@ -1,0 +1,10 @@
+<?php
+namespace RearSeat;
+
+class UserSession
+{
+    public static function getUserId()
+    {
+        
+    }
+}
