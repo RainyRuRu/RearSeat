@@ -98,7 +98,7 @@
                     </div>
                     <form id="send_message" method="post" action="send_message.php" onsubmit="return warn()">
                         <div id="mes_title">我有話要說:</div>
-                        <input type="hidden" name="to" value="{{data['seat']['seat_id']}}"><br>
+                        <input type="hidden" name="to" value="{{data['seat']['seat_id']}}">
                         <input id="mes_mes" type="text" name="message" required><br>
                         <button id="mes_btn" type="submit" class="btn btn-default">送出！</button>
                     </form>

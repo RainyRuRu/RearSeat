@@ -5,5 +5,54 @@
     </head>
     <body>
         {% include 'navigation_bar.html' %}
+        <div id="title"><center>
+            發起需求<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+        </center></div>
+        <div>
+            <form method="post" action="add_request.php" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="signup_sex" class="col-sm-4 control-label">需求類型</label>
+                    <div class="col-sm-4 radio_sex">
+                        <input name="sex" type="radio" class="radio_sex_child" value="0" required>找車位
+                        <input name="sex" type="radio" class="radio_sex_child" value="1">分享車位
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="from" class="col-sm-4 control-label">出發地</label>
+                    <div class="col-sm-4">
+                    <input type="text" name="starting_point" class="form-control" id="from" placeholder="高師大燕巢校區" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="to" class="col-sm-4 control-label">目的地</label>
+                    <div class="col-sm-4">
+                    <input type="text" name="end_point" class="form-control" id="to" placeholder="高師大和平校區" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="go_time" class="col-sm-4 control-label">出發時間</label>
+                    <div class="col-sm-4">
+                    <input type="datetime" name="go_time" class="form-control" id="go_time" placeholder="2016-06-01 13:00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reward" class="col-sm-4 control-label">報酬</label>
+                    <div class="col-sm-4">
+                    <input type="text" name="reward" class="form-control" id="reward" placeholder="補貼油錢10元" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-sm-4 control-label">其他描述</label>
+                    <div class="col-sm-4">
+                    <input type="text" name="description" class="form-control" id="description" placeholder="請自備安全帽" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div ><center>
+                    <button type="submit" class="btn btn-default">送出</button>
+                    </center></div>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
