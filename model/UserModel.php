@@ -3,6 +3,7 @@
 namespace RearSeat;
 
 use RearSeat\DB;
+use RearSeat\Mailer;
 use PDO;
 
 class UserModel
@@ -11,6 +12,7 @@ class UserModel
     {
         $db = DB::connect();
         $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
+        $code = static::createHushCode();
 
         $sql = "Insert into user(email, password, phone, photo, department, sex, name, code)".
             "value(:email, :password, :phone, :photo, :department, :sex, :name, :code)";
@@ -23,9 +25,11 @@ class UserModel
         $stmt->bindParam(":department", $data['department']);
         $stmt->bindParam(":sex", $data['sex']);
         $stmt->bindParam(":name", $data['name']);
-        $stmt->bindParam(":code", static::createHushCode());
+        $stmt->bindParam(":code", $code);
 
         $stmt->execute();
+
+        Mailer::mail($data['email'], $data['name'], $code);
     }
 
     public static function login($email, $password)
@@ -109,5 +113,36 @@ class UserModel
             $code .= $patten[rand(0, $pattenLen - 1)];
         }
         return $code;
+    }
+
+    public static function authenticate($mail, $code)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from user Where email = :email";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":email", $mail);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['code'] == $code) {
+            static::authenticatDone($result['user_id']);
+            return ture;
+        }
+
+        return false;
+    }
+
+    private static function authenticatDone($id)
+    {
+        $db = DB::connect();
+
+        $sql = "update user set code = true WHERE user_id = :id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
     }
 }
