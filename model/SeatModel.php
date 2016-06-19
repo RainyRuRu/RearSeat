@@ -36,6 +36,35 @@ class SeatModel{
         return $result;
     }
 
+    public static function seatchDoneSeatByReporter($reporter)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from seat Where reporter = :reporter and status = 2 order by post_time asc";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":reporter", $reporter);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public static function searchDoneSeatByOwner($owner)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from seat Where owner_id = :owner and status = 2 order by post_time asc";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":owner", $owner);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    
+
     public static function searchSeatById($id) {
         $db = DB::connect();
 
