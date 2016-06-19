@@ -123,9 +123,9 @@
                         <div class="dropdown">
                             <div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 {% if user['photo'] == null %}
-                                <img id="user_icon" src='{{ "data:image/png;base64, " ~ user["photo"] }}' height="35">
-                                {% else %}
                                 <img id="user_icon" src='img/no_photo.jpg' height="35">
+                                {% else %}
+                                <img id="user_icon" src='{{ "data:image/png;base64, " ~ user["photo"] }}' height="35">
                                 {% endif %}
                                 <span class="caret"></span>
                             </div>
