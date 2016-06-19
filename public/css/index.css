@@ -98,3 +98,7 @@ div.list_item_text {
     font-family: "Microsoft JhengHei";
     font-size: 18px;
 }
+
+div#message_modal {
+    font-family: "Microsoft JhengHei";
+}

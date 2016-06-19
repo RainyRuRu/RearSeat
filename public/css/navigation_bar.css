@@ -22,3 +22,35 @@ li#user {
 a#dropdown_item {
     cursor: pointer;
 }
+
+div#signup_modal {
+    font-family: "Microsoft JhengHei";
+}
+
+div.radio_sex {
+    margin-top: 5px;
+}
+
+input.radio_sex_child {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+span.check_icon {
+    font-size: 20px;
+    margin-left: -15px;
+    margin-top: 8px;
+    margin-right: 15px;
+}
+
+span.check_unknow {
+    color: orange;
+}
+
+span.check_ok {
+    color: green;
+}
+
+span.check_wrong {
+    color: red;
+}
