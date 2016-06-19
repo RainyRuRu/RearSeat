@@ -48,7 +48,78 @@ div#title {
 
 div#content {
     font-size: 18px;
+    line-height: 30px;
     margin-top: 10px;
     margin-left: 50px;
     margin-bottom: 20px;
+}
+
+div#list_field {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+div.list {
+    margin-top: 40px;
+}
+
+div.list_titlefield {
+    font-family: "Microsoft JhengHei";
+    margin-bottom: 5px;
+}
+
+span.list_title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span.list_more {
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 17vw;
+}
+
+div.list_content {
+    border-top-style: solid;
+    border-width: 5px;
+    border-color: #739e82;
+}
+
+li.list_item {
+    cursor: pointer;
+}
+
+li.list_item:hover {
+    background-color: #d1e8da;
+}
+
+div.list_item_text {
+    margin-top: 5px;
+    font-family: "Microsoft JhengHei";
+    font-size: 18px;
+}
+
+div#message_modal {
+    font-family: "Microsoft JhengHei";
+}
+
+form#send_message {
+    font-family: "Microsoft JhengHei";
+}
+
+div#mes_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+input#mes_mes {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100px;
+}
+
+button#mes_btn {
+    margin-bottom: 50px;
 }

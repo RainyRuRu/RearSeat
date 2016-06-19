@@ -61,11 +61,43 @@
                         <div id="content">
                             2016/12/3 12:00:00 出發</br>
                             A 往 B</br>
-                            報酬是一杯錫蘭紅茶</br>
+                            報酬是一杯錫蘭紅茶</br></br>
                             另外...</br>
                             多話
                         </div>
                     </div>
+                    <div class="list">
+                        <div class="list_titlefield">
+                            <span class="list_title">留言</span>
+                        </div>
+                        <div class="list_content">
+                            <ul class="list-group">
+                                {% for item in find %}
+                                <li class="list-group-item list_item">
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            {% if item['photo'] == null %}
+                                            <img src='img/no_photo.jpg' height="60">
+                                            {% else %}
+                                            <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
+                                            {% endif %}    
+                                        </div>
+                                        <div class="col-lg-10 list_item_text">
+                                            {{item["name"] }} {{item["go_time"] }}</br>
+                                            {{item["message"] }}
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <form id="send_message" method="post" action="send_message.php" onsubmit="return warn()">
+                        <div id="mes_title">我有話要說:</div>
+                        <input type="text" name="to" value="{{}}"><br>
+                        <input id="mes_mes" type="text" name="message" required><br>
+                        <button id="mes_btn" type="submit" class="btn btn-default">送出！</button>
+                    </form>
                 </div>
             </div>
         </div>
