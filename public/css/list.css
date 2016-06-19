@@ -1,0 +1,25 @@
+div#list_field {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+div#search_field {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div#title {
+    font-family: "Microsoft JhengHei";
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 50px
+}
+
+div#search_field,
+div#list_field {
+    font-family: "Microsoft JhengHei";
+}
+
+tr.clickable-row {
+    cursor: pointer;
+}
