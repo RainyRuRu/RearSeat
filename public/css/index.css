@@ -17,6 +17,10 @@ p#slogan {
     margin-bottom: 30px;
 }
 
+div#search_field {
+    font-family: "Microsoft JhengHei";
+}
+
 #btn_select,
 #list_select{
     width: 100px; 
@@ -83,6 +87,10 @@ div.list_content {
 
 li.list_item {
     cursor: pointer;
+}
+
+li.list_item:hover {
+    background-color: #d1e8da;
 }
 
 div.list_item_text {

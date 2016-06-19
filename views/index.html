@@ -3,7 +3,7 @@
     <head>
         {% include 'header.html' with {'jsfile' : 'index.js', 'cssfile' : 'index.css'} %}
     </head>
-    <body>
+    <body onload="thisIs('{{ user_id }}');">
         {% include 'navigation_bar.html' %}
         <div id="title_filed">
             <p id="slogan">Share Seat, Make Friends</p>
@@ -12,12 +12,13 @@
                     <div id="search_field" class="input-group">
                         <input type="text" class="form-control" placeholder="高師大燕巢校區">
                         <div class="input-group-btn">
-                            <button id="btn_select" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">找車位
+                            <button id="btn_select" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span id="select_option">找車位</span>
                                 <span class="caret" style="margin-left: 5px;"></span>
                             </button>
                             <ul id="list_select" class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li><a href="#">找車位</a></li>
-                                <li><a href="#">分享車位</a></li>
+                                <li><a style="cursor: pointer" onclick="selectOption('找車位')">找車位</a></li>
+                                <li><a style="cursor: pointer" onclick="selectOption('分享車位')">分享車位</a></li>
                             </ul>
                         </div>
                     </div>
@@ -27,15 +28,15 @@
                 </div>
             </div>
             <div id="menu" class="row">
-                <div class="menu_child col-lg-2 col-lg-offset-2">
+                <div class="menu_child col-lg-2 col-lg-offset-2" onclick="goFindPage()">
                     <img src="/img/icon_moto.png" height="70">
                     <span class="menu_child_text">找車位</span>
                 </div>
-                <div class="menu_child col-lg-2 col-lg-offset-1">
+                <div class="menu_child col-lg-2 col-lg-offset-1" onclick="goSharePage()">
                     <img src="/img/icon_car.png" height="70">
                     <span class="menu_child_text">分享車位</span>
                 </div>
-                <div class="menu_child col-lg-2 col-lg-offset-1">
+                <div class="menu_child col-lg-2 col-lg-offset-1" onclick="goNewRequestPage()">
                     <img src="/img/icon_write.png" height="70">
                     <span class="menu_child_text">發起需求</span>
                 </div>
@@ -46,14 +47,14 @@
                 <div class="list">
                     <div class="list_titlefield">
                         <span class="list_title">有人在找...</span>
-                        <span class="list_more" id="find_more">>>>more</span>
+                        <span class="list_more" id="find_more" onclick="goFindPage()">>>>more</span>
                     </div>
                     <div class="list_content">
                         <ul class="list-group">
                             <li class="list-group-item list_item">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <img id="rearseat_icon" src="/img/test.jpg" height="60">
+                                        <img src="/img/test.jpg" height="60">
                                     </div>
                                     <div class="col-lg-10 list_item_text">
                                         2016/06/19 14:00</br>
@@ -63,7 +64,19 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item list_item">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <img src="/img/test.jpg" height="60">
+                                    </div>
+                                    <div class="col-lg-10 list_item_text">
+                                        2016/06/19 14:00</br>
+                                        高師大燕巢校區
+                                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                        高師大和平校區
+                                    </div>
+                                </div>
+                            </li>
                             <li class="list-group-item">Morbi leo risus</li>
                             <li class="list-group-item">Porta ac consectetur ac</li>
                             <li class="list-group-item">Vestibulum at eros</li>
@@ -75,7 +88,7 @@
                 <div class="list">
                     <div class="list_titlefield">
                         <span class="list_title">有人分享...</span>
-                        <span class="list_more" id="share_more">>>>more</span>
+                        <span class="list_more" id="share_more" onclick="goSharePage()">>>>more</span>
                     </div>
                     <div class="list_content">
                         <ul class="list-group">
