@@ -103,6 +103,19 @@ class UserModel
         return $result;
     }
 
+    public static function searchUserByEmail($email)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from user Where email = :email";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     private static function createHushCode()
     {
         $nameLen = 20;
