@@ -17,12 +17,12 @@ function checkEmail() {
         type:'get',
         dataType:'JSON',
         success: function(output) {
-            if (output.has == true){
-                emailOK = true;
-                changeCheckMode("mail_check", "ok");
-            } else{
+            if (output.has){
                 emailOK = false;
                 changeCheckMode("mail_check", "wrong");
+            } else {
+                emailOK = true;
+                changeCheckMode("mail_check", "ok");
             }
         }
     });
