@@ -47,7 +47,7 @@ class UserModel
         } else {
             if (password_verify($password, $row['password'])) {
                 UserSession::setUserId($row['user_id']);
-                UserSession::setUserPhoto($row['photo']);
+                UserSession::setUserPhoto(base64_encode($row['photo']));
                 return ture;
             }
         }

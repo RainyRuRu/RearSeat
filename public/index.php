@@ -22,7 +22,7 @@ foreach ($findSeat as $seat) {
         break;
     }
     $user = UserModel::searchUser($seat['reporter']);
-    $seat['photo'] = $user['photo'];
+    $seat['photo'] = base64_encode($user['photo']);
     array_push($finds, $seat);
     $count++;
 }
@@ -33,7 +33,7 @@ foreach ($shareSeats as $seat) {
         break;
     }
     $user = UserModel::searchUser($seat['reporter']);
-    $seat['photo'] = $user['photo'];
+    $seat['photo'] = base64_encode($user['photo']);
     array_push($finds, $seat);
     $count++;
 }
