@@ -3,6 +3,7 @@
 include __DIR__ . '/../vendor/autoload.php';
 
 use RearSeat\UserModel;
+use RearSeat\ReservationModel;
 
 $action = $_GET['action'];
 
@@ -30,4 +31,14 @@ function api_hasEmail() {
     }
 
     return ['has' => $check];
+}
+
+function api_addReservation() {
+    $seat_id = $_GET['seat_id'];
+    $user_id = $_GET['user_id'];
+    $message = $_GET['message'];
+
+    $result = ReservationModel::add($seat_id, $user_id, $message);
+
+    return ['result' => true];
 }

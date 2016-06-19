@@ -4,3 +4,20 @@ function warn() {
         return false;
     }
 }
+
+function reservation(seat_id, user_id) {
+    $.ajax({
+        url:'api.php',
+        data:{action: "addReservation",
+              seat_id: seat_id,
+              user_id: user_id,
+              message: ""},
+        type:'get',
+        dataType:'JSON',
+        success: function(output) {
+            if (output.result){
+                alert("OK");
+            }
+        }
+    });
+}

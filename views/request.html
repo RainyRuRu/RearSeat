@@ -68,6 +68,12 @@
                             報酬是{{data['seat']['reward']}}</br></br>
                             另外...</br>
                             {{data['seat']['description']}}
+                            <br>
+                            {% if data['seat']['reporter'] != user['id']%}
+                            <center>
+                                <button class="btn btn-info" onclick="reservation(&quot;{{data['seat']['seat_id']}}&quot;, &quot;{{ user['id'] }}&quot;)">我要預約</button>
+                            </center>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="list">
