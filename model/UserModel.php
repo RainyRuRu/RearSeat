@@ -15,14 +15,13 @@ class UserModel
         $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
         $code = static::createHushCode();
 
-        $sql = "Insert into user(email, password, phone, photo, department, sex, name, code)".
-            "value(:email, :password, :phone, :photo, :department, :sex, :name, :code)";
+        $sql = "Insert into user(email, password, phone, department, sex, name, code)".
+            "value(:email, :password, :phone, :department, :sex, :name, :code)";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":email", $data['email']);
         $stmt->bindParam(":password", $password_hash);
         $stmt->bindParam(":phone", $data['phone']);
-        $stmt->bindParam(":photo", $data['photo']);
         $stmt->bindParam(":department", $data['department']);
         $stmt->bindParam(":sex", $data['sex']);
         $stmt->bindParam(":name", $data['name']);
@@ -30,7 +29,7 @@ class UserModel
 
         $stmt->execute();
 
-        Mailer::mail($data['email'], $data['name'], $code);
+        return Mailer::mail($data['email'], $data['name'], $code);
     }
 
     public static function login($email, $password)
