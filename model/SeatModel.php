@@ -23,6 +23,32 @@ class SeatModel{
         return $result;
     }
 
+    public static function searchSeatByReporter($reporter) {
+        $db = DB::connect();
+
+        $sql = "select * from seat Where reporter = :reporter order by post_time asc";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":reporter", $reporter);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public static function searchSeatById($id) {
+        $db = DB::connect();
+
+        $sql = "select * from seat Where seat_id = :seat_id order by post_time asc";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":seat_id", $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result;
+    }
+
     public static function searchSeatByKeyword($request, $keyword, $page = null) {
         $db = DB::connect();
         $keyword = '%' . $keyword . '%';

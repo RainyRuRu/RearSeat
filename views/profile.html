@@ -13,13 +13,23 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-8 userName">
-                            可愛的小胖胖
+                            {{data['profile']['name']}}
                         </div>
+                        {% if data['profile']['facebooe'] != null%}
                         <div class="col-lg-2">
                             <img src='img/facebook.png' height="30">
                         </div>
+                        {% endif %}
+                        {% if data['profile']['line'] != null%}
                         <div class="col-lg-1">
                             <img src='img/line.png' height="30">
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-8 userName">
+                            {{data['profile']['email']}}
                         </div>
                     </div>
                     <hr>
@@ -43,18 +53,18 @@
                     <div class="row">
                         <div class="col-lg-4 scorefont">
                             <center>
-                            <span>1</span>
+                            <span>{{data['score']['good'] | length}}</span>
                             </center>
                         </div>
                         <div class="col-lg-4 scorefont">
                             <center>
-                            <span>1</span>
+                            <span>{{data['score']['soso'] | length}}</span>
                             </center>
                         </div>
 
                         <div class="col-lg-4 scorefont">
                             <center>
-                            <span>1</span>
+                            <span>{{data['score']['bad'] | length}}</span>
                             </center>
                         </div>
                     </div>
@@ -66,10 +76,36 @@
                         <li id="historyTab"><a href="?tab=history">History</a></li>
                     </ul>
                     <div class="tabContainer">
-                        sex = 
-                        department = 
-                        phone = 
-                        
+                        {% if tab == null %}
+                            {% include 'profileForm.html' %}
+                        {% endif %}
+                        {% if tab == "request" %}
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                選擇項目
+                                <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" onclick="switchDiv('request')">我的需求</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" onclick="switchDiv('reservation')">我的預約</a></li>
+                            </div>
+
+                            <div id="reservationDiv" class="requestContainer">
+                                ewe
+                                {{data['request'][0]['seat_id']}}
+                            </div>
+
+                            <div id="requestDiv" class="requestContainer">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>
+                                            
+                                        </th>
+                                    </tr>
+                                </table>
+                                {{data['request'][0]['seat_id']}}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

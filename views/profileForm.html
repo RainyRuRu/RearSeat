@@ -1,0 +1,56 @@
+<form id="profileForm" class="form-horizontal" role="form" method="post" action="updateUser.php">
+    <input type="hidden" name="id" value="{{data['profile']['user_id']}}">
+    <div class="form-group">
+        <label for="signup_name" class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-7">
+            <input name="name" type="text" class="form-control" id="signup_name" value="{{data['profile']['name']}}" disabled required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="signup_sex" class="col-sm-2 control-label">性別</label>
+        <div class="col-sm-7 radio_sex">
+            {% if data['profile']['sex'] == 1 %}
+            <input name="sex" type="radio" class="radio_sex_child" value="0" disabled required>男
+            <input name="sex" type="radio" class="radio_sex_child" value="1" disabled checked>女
+            {% else %}
+            <input name="sex" type="radio" class="radio_sex_child" value="0" disabled checked required>男
+            <input name="sex" type="radio" class="radio_sex_child" value="1" disabled >女
+
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="signup_dep" class="col-sm-2 control-label">系級</label>
+        <div class="col-sm-7">
+            <input name="department" type="text" class="form-control" id="signup_dep" value="{{data['profile']['department']}}" disabled required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="signup_phone" class="col-sm-2 control-label">手機</label>
+        <div class="col-sm-7">
+            <input name="phone" type="text" class="form-control" id="signup_phone" value="{{data['profile']['phone']}}" disabled required>
+        </div>
+    </div>  
+    {% if user['id'] == data['profile']['user_id'] %}
+    <div class="form-group">
+        <label for="signup_dep" class="col-sm-2 control-label">Line</label>
+        <div class="col-sm-7">
+            <input name="line" type="text" class="form-control" id="signup_dep" value="{{data['profile']['line']}}" disabled>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="signup_phone" class="col-sm-2 control-label">Facebook</label>
+        <div class="col-sm-7">
+            <input name="facebook" type="text" class="form-control" id="signup_phone" value="{{data['profile']['fb']}}" disabled>
+        </div>
+    </div>
+    <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="editBtn" type="button" class="btn btn-default" onclick="edit()">編輯</button>
+    </div>
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="submitBtn" type="submit" class="btn btn-default">送出</button>
+    </div>
+    {% endif %}
+    </div>
+    </form>

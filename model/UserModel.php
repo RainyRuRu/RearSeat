@@ -60,16 +60,17 @@ class UserModel
     {
         $db = DB::connect();
 
-        $sql = "update user set phone = :phone, photo = :photo, department = :department, sex = :sex, name = :name " .
+        $sql = "update user set phone = :phone, department = :department, sex = :sex, name = :name , line = :line , fb = :facebook " .
             "WHERE user_id = :id";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":id", $data['id']);
         $stmt->bindParam(":phone", $data['phone']);
-        $stmt->bindParam(":photo", $data['photo']);
         $stmt->bindParam(":department", $data['department']);
         $stmt->bindParam(":sex", $data['sex']);
         $stmt->bindParam(":name", $data['name']);
+        $stmt->bindParam(":line", $data['line']);
+        $stmt->bindParam(":facebook", $data['facebook']);
 
         $stmt->execute();
     }
