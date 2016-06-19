@@ -38,5 +38,22 @@ class UserSession
     {
         static::removeUserId();
         static::removeUserPhoto();
+        static::removeMessage();
     }
+
+    public static function getMessage()
+    {
+        return isset($_SESSION['message']) ? $_SESSION['message'] : null;
+    }
+
+    public static function setMessage($id)
+    {
+        $_SESSION['message'] = $id;
+    }
+
+    public static function removeMessage()
+    {
+        unset($_SESSION['message']);
+    }
+
 }

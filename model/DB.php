@@ -15,7 +15,8 @@ class DB
         $db = new PDO(
             'mysql:host=' . static::$db_path . ';dbname=' . static::$database,
             static::$user_name,
-            static::$user_password);
+            static::$user_password,
+            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
         return $db;
     }

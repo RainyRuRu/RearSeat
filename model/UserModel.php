@@ -15,14 +15,13 @@ class UserModel
         $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
         $code = static::createHushCode();
 
-        $sql = "Insert into user(email, password, phone, photo, department, sex, name, code)".
-            "value(:email, :password, :phone, :photo, :department, :sex, :name, :code)";
+        $sql = "Insert into user(email, password, phone, department, sex, name, code)".
+            "value(:email, :password, :phone, :department, :sex, :name, :code)";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":email", $data['email']);
         $stmt->bindParam(":password", $password_hash);
         $stmt->bindParam(":phone", $data['phone']);
-        $stmt->bindParam(":photo", $data['photo']);
         $stmt->bindParam(":department", $data['department']);
         $stmt->bindParam(":sex", $data['sex']);
         $stmt->bindParam(":name", $data['name']);
@@ -30,7 +29,7 @@ class UserModel
 
         $stmt->execute();
 
-        Mailer::mail($data['email'], $data['name'], $code);
+        return Mailer::mail($data['email'], $data['name'], $code);
     }
 
     public static function login($email, $password)
@@ -48,7 +47,7 @@ class UserModel
         } else {
             if (password_verify($password, $row['password'])) {
                 UserSession::setUserId($row['user_id']);
-                UserSession::setUserPhoto($row['photo']);
+                UserSession::setUserPhoto(base64_encode($row['photo']));
                 return ture;
             }
         }
@@ -101,6 +100,19 @@ class UserModel
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function searchUserByEmail($email)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from user Where email = :email";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
         return $result;
     }
 
