@@ -28,6 +28,13 @@ foreach ($shareSeats as $seat) {
     array_push($finds, $seat);
 }
 
+$message = null;
+
+if (!is_null(UserSession::getMessage())) {
+    $message = UserSession::getMessage();
+    UserSession::removeMessage();
+}
+
 $param = [
 	"user" => [
         'id' => UserSession::getUserId(),
@@ -35,6 +42,7 @@ $param = [
     ],
     "find" => $finds,
     "share" => $shares,
+    "message" => $message,
 ];
 
 echo $twig->render('index.html', $param);
