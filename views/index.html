@@ -3,41 +3,43 @@
     <head>
         {% include 'header.html' with {'jsfile' : 'index.js', 'cssfile' : 'index.css'} %}
     </head>
-    <body onload="thisIs({{ user['id'] }});">
+    <body onload="onload(&quot;{{ user['id'] }}&quot;, &quot;{{ message }}&quot;)">
         {% include 'navigation_bar.html' %}
         <div id="title_filed">
             <p id="slogan">Share Seat, Make Friends</p>
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-3">
-                    <div id="search_field" class="input-group">
-                        <input type="text" class="form-control" placeholder="高師大燕巢校區">
-                        <div class="input-group-btn">
-                            <button id="btn_select" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <span id="select_option">找車位</span>
-                                <span class="caret" style="margin-left: 5px;"></span>
-                            </button>
-                            <ul id="list_select" class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li><a style="cursor: pointer" onclick="selectOption('找車位')">找車位</a></li>
-                                <li><a style="cursor: pointer" onclick="selectOption('分享車位')">分享車位</a></li>
-                            </ul>
+                <form name="search_form" onsubmit="return goSearch()">
+                    <div class="col-lg-5 col-lg-offset-3">
+                        <div id="search_field" class="input-group">
+                            <input name="keyword" type="text" class="form-control" placeholder="高師大燕巢校區" required>
+                            <div class="input-group-btn">
+                                <button id="btn_select" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span id="select_option">找車位</span>
+                                    <span class="caret" style="margin-left: 5px;"></span>
+                                </button>
+                                <ul id="list_select" class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <li><a style="cursor: pointer" onclick="selectOption('找車位')">找車位</a></li>
+                                    <li><a style="cursor: pointer" onclick="selectOption('分享車位')">分享車位</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-1">
-                    <button type="button" class="btn btn-default">出發！</button>
-                </div>
+                    <div class="col-lg-1">
+                        <button type="submit" class="btn btn-default">出發！</button>
+                    </div>
+                </form>
             </div>
             <div id="menu" class="row">
                 <div class="menu_child col-lg-2 col-lg-offset-2" onclick="goFindPage()">
-                    <img src="/img/icon_moto.png" height="70">
+                    <img src="img/icon_moto.png" height="70">
                     <span class="menu_child_text">找車位</span>
                 </div>
                 <div class="menu_child col-lg-2 col-lg-offset-1" onclick="goSharePage()">
-                    <img src="/img/icon_car.png" height="70">
+                    <img src="img/icon_car.png" height="70">
                     <span class="menu_child_text">分享車位</span>
                 </div>
                 <div class="menu_child col-lg-2 col-lg-offset-1" onclick="goNewRequestPage()">
-                    <img src="/img/icon_write.png" height="70">
+                    <img src="img/icon_write.png" height="70">
                     <span class="menu_child_text">發起需求</span>
                 </div>
             </div>
@@ -52,7 +54,7 @@
                     <div class="list_content">
                         <ul class="list-group">
                             {% for item in find %}
-                            <li class="list-group-item list_item">
+                            <li class="list-group-item list_item" onclick="goTheRequestPage({{ item['seat_id'] }})">
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
@@ -79,7 +81,7 @@
                     <div class="list_content">
                         <ul class="list-group">
                             {% for item in share %}
-                            <li class="list-group-item list_item">
+                            <li class="list-group-item list_item" onclick="goTheRequestPage({{ item['seat_id'] }})">
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
@@ -100,6 +102,25 @@
         </div>
         <div id="footer">
             CopyRight © 2016 Rainy & Linda 
+        </div>
+
+        <!-- 訊息視窗 -->
+        <div class="modal fade" id="message_modal" tabindex="-1" role="dialog" aria-labelledby="message_modal_title" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="message_modal_title">Hi</h4>
+                    </div>
+                    <div class="modal-body" id="message_content"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">知道了！</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-               <img id="rearseat_icon" src="/img/rearseat_png.png" height="35">
+               <img id="rearseat_icon" src="img/rearseat_png.png" height="35">
             </a>
             <a href="/">
                 <p id="title" class="navbar-text">RearSeat</p>
@@ -26,8 +26,8 @@
                             </div>
                             <form method="post" action="login.php">
                                 <div class="modal-body">    
-                                    <input type="email" class="form-control" name="email" placeholder="Email"><br>
-                                    <input type="password" class="form-control" name="password" placeholder="Password">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required><br>
+                                    <input type="password" class="form-control" name="password" placeholder="Password" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -49,14 +49,60 @@
                                 </button>
                                 <h4 class="modal-title" id="signup_modal_title">Sign up</h4>
                             </div>
-                            <form>
+                            <form class="form-horizontal">
                                 <div class="modal-body">    
-                                    <input type="email" class="form-control" name="email" placeholder="Email"><br>
-                                    <input type="password" class="form-control" name="password" placeholder="Password">
+                                    <div class="form-group">
+                                        <label for="signup_mail" class="col-sm-2 control-label">學校信箱</label>
+                                        <div class="col-sm-7">
+                                            <input name="email" type="email" class="form-control" id="signup_mail" placeholder="studentNumber@mail.nknu.edu.tw" required>
+                                        </div>
+                                        <span class="glyphicon glyphicon-exclamation-sign col-sm-1 check_icon check_unknow" aria-hidden="true"></span>
+                                        <button type="button" class="btn btn-default col-sm-1" onclick="checkEmail()">檢查</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup_pw" class="col-sm-2 control-label">密碼</label>
+                                        <div class="col-sm-7">
+                                            <input name="password" type="password" class="form-control" id="signup_pw" placeholder="長度至少6個字元" pattern=".{6,}" required title="長度至少6個字元">
+                                        </div>
+                                        <span class="glyphicon glyphicon-ok-sign col-sm-1 check_icon check_ok" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup_pw_check" class="col-sm-2 control-label">確認密碼</label>
+                                        <div class="col-sm-7">
+                                            <input type="password" class="form-control" id="signup_pw_check" placeholder="請再輸入一次密碼" required>
+                                        </div>
+                                        <span class="glyphicon glyphicon-remove-sign col-sm-1 check_icon check_wrong" aria-hidden="true"></span>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="signup_name" class="col-sm-2 control-label">姓名</label>
+                                        <div class="col-sm-7">
+                                            <input name="name" type="text" class="form-control" id="signup_name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup_sex" class="col-sm-2 control-label">性別</label>
+                                        <div class="col-sm-7 radio_sex">
+                                            <input name="sex" type="radio" class="radio_sex_child" value="0" required>男
+                                            <input name="sex" type="radio" class="radio_sex_child" value="1">女
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup_dep" class="col-sm-2 control-label">系級</label>
+                                        <div class="col-sm-7">
+                                            <input name="department" type="text" class="form-control" id="signup_dep" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup_phone" class="col-sm-2 control-label">手機</label>
+                                        <div class="col-sm-7">
+                                            <input name="phone" type="text" class="form-control" id="signup_phone" required>
+                                        </div>
+                                    </div>                                    
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="submit" class="btn btn-primary">Sign up</button>
                                 </div>
                             </form> 
                         </div>
@@ -64,7 +110,7 @@
                 </div>
             {% else %}
                 <ul class="nav navbar-nav">
-                    <li style="cursor: pointer"><a>
+                    <li style="cursor: pointer"><a href="new_request.php">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Request
                     </a></li>
                     <li style="cursor: pointer;" id="user">
@@ -75,13 +121,13 @@
                             </div>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li role="presentation">
-                                    <a role="menuitem" class="dropdown_item">My Profile</a>
+                                    <a href="profile.php" role="menuitem" class="dropdown_item">My Profile</a>
                                 </li>
                                 <li role="presentation">
-                                    <a role="menuitem" class="dropdown_item">Request</a>
+                                    <a href="my_request.php" role="menuitem" class="dropdown_item">Request</a>
                                 </li>
                                 <li role="presentation">
-                                    <a role="menuitem" class="dropdown_item">RearSeat History</a>
+                                    <a href="history.php" role="menuitem" class="dropdown_item">RearSeat History</a>
                                 </li>
                                 <li role="presentation">
                                     <a href="logout.php" role="menuitem" class="dropdown_item">Logout</a>
