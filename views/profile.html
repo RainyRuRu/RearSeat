@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'header.html' with {'jsfile' : 'profile.js', 'cssfile' : 'profile.css'} %}
+    </head>
+    <body onload="onload('{{tab}}')">
+        {% include 'navigation_bar.html' %}
+        <div class="container">
+            <div class="row mainContainer">
+                <div class="col-lg-3">
+                    <div>
+                        <img id="user_icon" src='{{ "data:image/png;base64, " ~ user["photo"] }}' height="250">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 userName">
+                            可愛的小胖胖
+                        </div>
+                        <div class="col-lg-2">
+                            <img src='img/facebook.png' height="30">
+                        </div>
+                        <div class="col-lg-1">
+                            <img src='img/line.png' height="30">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <center>
+                            <img src='img/happy.png' height="40">
+                            </center>
+                        </div>
+                        <div class="col-lg-4">
+                            <center>
+                            <img src='img/smile.png' height="40">
+                            </center>
+                        </div>
+                        <div class="col-lg-4">
+                            <center>
+                            <img src='img/confused.png' height="40">
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 scorefont">
+                            <center>
+                            <span>1</span>
+                            </center>
+                        </div>
+                        <div class="col-lg-4 scorefont">
+                            <center>
+                            <span>1</span>
+                            </center>
+                        </div>
+
+                        <div class="col-lg-4 scorefont">
+                            <center>
+                            <span>1</span>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <ul class="nav nav-tabs">
+                        <li id="profileTab"><a href="?">Profile</a></li>
+                        <li id="requestTab"><a href="?tab=request">Request</a></li>
+                        <li id="historyTab"><a href="?tab=history">History</a></li>
+                    </ul>
+                    <div class="tabContainer">
+                        sex = 
+                        department = 
+                        phone = 
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </body>
+</html>

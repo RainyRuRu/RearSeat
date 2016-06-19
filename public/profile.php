@@ -30,4 +30,4 @@ $param = [
     ],
 ];
 
-echo $twig->render('index.html', $param);
+echo $twig->render('profile.html', $param);

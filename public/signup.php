@@ -11,7 +11,7 @@ session_start();
 $email = $_POST['email'];
 $password = $_POST['password'];
 $name = $_POST['name'];
-$sex = $_POST['set'];
+$sex = $_POST['sex'];
 $department = $_POST['department'];
 $phone = $_POST['phone'];
 
