@@ -4,6 +4,7 @@ namespace RearSeat;
 
 use RearSeat\DB;
 use RearSeat\Mailer;
+use RearSeat\Session;
 use PDO;
 
 class UserModel
@@ -46,6 +47,8 @@ class UserModel
             return false;
         } else {
             if (password_verify($password, $row['password'])) {
+                Session::setUserId($row['user_id']);
+                Session::setUserPhoto($row['photo']);
                 return ture;
             }
         }
