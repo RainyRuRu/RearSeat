@@ -71,7 +71,7 @@ class SeatModel{
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":seat_id", $id);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
         return $result;
     }

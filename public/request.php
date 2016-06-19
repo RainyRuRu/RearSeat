@@ -3,24 +3,38 @@
 include __DIR__ . '/../vendor/autoload.php';
 
 use RearSeat\SeatModel;
+use RearSeat\ScoreModel;
 use RearSeat\UserModel;
 use RearSeat\UserSession;
+use RearSeat\MessageModel;
 
 session_start();
 
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
 $twig = new Twig_Environment($loader);
 
-$result = SeatModel::searchSeatByRequest(1);
+$id = $_GET['id'];
 
-$data = [];
+$seat = SeatModel::searchSeatById($id);
+$userProfile = UserModel::searchUser($result['reporter']);
+$userProfile['photo'] = base64_encode($userProfile['photo']);
 
-foreach ($result as $seat) {
-    $user = UserModel::searchUser($seat['reporter']);
-    $seat['photo'] = base64_encode($user['photo']);
-    $seat['name'] = $user['name'];
-    array_push($data, $seat);
-}
+$messages = MessageModel::searchMessages($id);
+$good = ScoreModel::searchScores($profile_id, 2);
+$soso = ScoreModel::searchScores($profile_id, 1);
+$bad = ScoreModel::searchScores($profile_id, 0);
+
+
+$data = [
+    "profile" => $userProfile,
+    "score" => [
+        "good" => $good,
+        "soso" => $soso,
+        "bad" => $bad,
+    ],
+    "seat" => $seat,
+    "message" => $messages
+];
 
 $param = [
     "user" => [
