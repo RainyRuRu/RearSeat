@@ -20,8 +20,17 @@ class MessageModel
         return $result;
     }
 
-    public static function insertMessages($id, $message, $user)
+    public static function insertMessages($id, $user_id, $message)
     {
+        $db = DB::connect();
+        $sql = "Insert into message(seat_id, user_id, message)".
+            "value(:seat_id, :user_id, :message)";
 
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":seat_id", $id);
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt->bindParam(":message", $message);
+
+        $stmt->execute();
     }
 }
