@@ -1,0 +1,59 @@
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    選擇項目
+    <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" onclick="switchDiv('request')">我的需求</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" onclick="switchDiv('reservation')">我的預約</a></li>
+</div>
+
+<div id="reservationDiv" class="requestContainer">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="col-lg-2"><center>出發時間</center></th>
+                <th class="col-lg-2"><center>出發地</center></th>
+                <th class="col-lg-2"><center>目的地</center></th>
+                <th class="col-lg-2"><center>期望報酬</center></th>
+                <th class="col-lg-2"><center>刪除</center></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data['reservation'] %}
+            <tr class='clickable-row' data-href='request.php?id={{ item["id"] }}'>
+                <td><center>{{ item["go_time"] }}</center></td>
+                <td><center>{{ item["starting_point"] }}</center></td>
+                <td><center>{{ item["end_point"] }}</center></td>
+                <td><center>{{ item["reward"] }}</center></td>
+                <td><center><button class="btn btn-danger">刪除</button></center></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="requestDiv" class="requestContainer">
+   <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="col-lg-2"><center>出發時間</center></th>
+                <th class="col-lg-2"><center>出發地</center></th>
+                <th class="col-lg-2"><center>目的地</center></th>
+                <th class="col-lg-2"><center>期望報酬</center></th>
+                <th class="col-lg-2"><center>刪除</center></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data['request'] %}
+            <tr class='clickable-row' data-href='request.php?id={{ item["id"] }}'>
+                <td><center>{{ item["go_time"] }}</center></td>
+                <td><center>{{ item["starting_point"] }}</center></td>
+                <td><center>{{ item["end_point"] }}</center></td>
+                <td><center>{{ item["reward"] }}</center></td>
+                <td><center><button class="btn btn-danger">刪除</button></center></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

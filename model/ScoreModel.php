@@ -21,6 +21,36 @@ class ScoreModel
         return $result;
     }
 
+    public static function searchScorePost($seat_id, $poster_id)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from score Where seat_id = :seat_id and poster_id = :poster_id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":seat_id", $seat_id);
+        $stmt->bindParam(":poster_id", $poster_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public static function searchScoreReceive($seat_id, $receiver_id)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from score Where seat_id = :seat_id and receiver_id = :receiver_id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":receiver_id", $receiver_id);
+        $stmt->bindParam(":seat_id", $seat_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
     public static function insertScores()
     {
 

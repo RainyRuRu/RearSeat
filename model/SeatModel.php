@@ -34,6 +34,35 @@ class SeatModel{
         return $result;
     }
 
+    public static function seatchDoneSeatByReporter($reporter)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from seat Where reporter = :reporter and status = 2 order by post_time asc";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":reporter", $reporter);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public static function searchDoneSeatByOwner($owner)
+    {
+        $db = DB::connect();
+
+        $sql = "select * from seat Where owner_id = :owner and status = 2 order by post_time asc";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":owner", $owner);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    
+
     public static function searchSeatById($id) {
         $db = DB::connect();
 
@@ -42,7 +71,7 @@ class SeatModel{
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":seat_id", $id);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
         return $result;
     }
@@ -73,4 +102,23 @@ class SeatModel{
         return $new_data;
     }
 
+    public static function insertSeat($data) {
+        $db = DB::connect();
+
+        $sql = "Insert into seat(reporter, request, starting_point, end_point, go_time, reward, status, description)".
+            "value(:reporter, :request, :starting_point, :end_point, :go_time, :reward, :status, :description)";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":reporter", $data['reporter']);
+        $stmt->bindParam(":request", $data['request']);
+        $stmt->bindParam(":starting_point", $data['starting_point']);
+        $stmt->bindParam(":end_point", $data['end_point']);
+        $stmt->bindParam(":go_time", $data['go_time']);
+        $stmt->bindParam(":reward", $data['reward']);
+        $stmt->bindParam(":status", 0);
+        $stmt->bindParam(":description", $data['description']);
+
+        $stmt->execute();
+    }
+    
 }
