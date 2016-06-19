@@ -24,6 +24,7 @@ if (isset($_GET['id'])) {
     $profile_id = $_GET['id'];
 }
 
+
 $data = [];
 if ($tab == 'request') {
     $data = showRequest($profile_id);
@@ -31,9 +32,9 @@ if ($tab == 'request') {
 } else if ($tab == 'history') {
     $data = showHistory($profile_id);
 
-} else {
-    $data = showProfile($profile_id);
 }
+
+$data = array_merge($data, showProfile($profile_id));
 
 
 $param = [
