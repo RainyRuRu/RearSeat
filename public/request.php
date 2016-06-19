@@ -16,13 +16,13 @@ $twig = new Twig_Environment($loader);
 $id = $_GET['id'];
 
 $seat = SeatModel::searchSeatById($id);
-$userProfile = UserModel::searchUser($result['reporter']);
+$userProfile = UserModel::searchUser($seat['reporter']);
 $userProfile['photo'] = base64_encode($userProfile['photo']);
 
 $messages = MessageModel::searchMessages($id);
-$good = ScoreModel::searchScores($profile_id, 2);
-$soso = ScoreModel::searchScores($profile_id, 1);
-$bad = ScoreModel::searchScores($profile_id, 0);
+$good = ScoreModel::searchScores($userProfile['user_id'], 2);
+$soso = ScoreModel::searchScores($userProfile['user_id'], 1);
+$bad = ScoreModel::searchScores($userProfile['user_id'], 0);
 
 
 $data = [
@@ -42,7 +42,7 @@ $param = [
         'photo' => UserSession::getUserPhoto(),
     ],
     "data" => $data,
-    "page" => "share"
+    "request" => $seat['request']
 ];
 
 echo $twig->render('request.html', $param);

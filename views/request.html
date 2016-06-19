@@ -56,14 +56,18 @@
                 <div class="col-lg-7 col-lg-offset-1">
                     <div class="arrow_box">
                         <center>
+                            {% if request == 0 %}
                             <div id="title">我要找車位</div>
+                            {% else %}
+                            <div id="title">我要分享車位</div>
+                            {% endif %}
                         </center>
                         <div id="content">
-                            2016/12/3 12:00:00 出發</br>
-                            A 往 B</br>
-                            報酬是一杯錫蘭紅茶</br></br>
+                            {{data['seat']['go_time']}} 出發</br>
+                            {{data['seat']['starting_point']}} 往 {{data['seat']['end_point']}}</br>
+                            報酬是{{data['seat']['reward']}}</br></br>
                             另外...</br>
-                            多話
+                            {{data['seat']['description']}}
                         </div>
                     </div>
                     <div class="list">
@@ -72,7 +76,7 @@
                         </div>
                         <div class="list_content">
                             <ul class="list-group">
-                                {% for item in find %}
+                                {% for item in data['message'] %}
                                 <li class="list-group-item list_item">
                                     <div class="row">
                                         <div class="col-lg-2">
@@ -83,7 +87,7 @@
                                             {% endif %}    
                                         </div>
                                         <div class="col-lg-10 list_item_text">
-                                            {{item["name"] }} {{item["go_time"] }}</br>
+                                            {{item["name"] }} {{item["post_time"] }}</br>
                                             {{item["message"] }}
                                         </div>
                                     </div>
@@ -94,7 +98,7 @@
                     </div>
                     <form id="send_message" method="post" action="send_message.php" onsubmit="return warn()">
                         <div id="mes_title">我有話要說:</div>
-                        <input type="text" name="to" value="{{}}"><br>
+                        <input type="hidden" name="to" value="{{data['seat']['seat_id']}}"><br>
                         <input id="mes_mes" type="text" name="message" required><br>
                         <button id="mes_btn" type="submit" class="btn btn-default">送出！</button>
                     </form>
