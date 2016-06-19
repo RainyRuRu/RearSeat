@@ -30,6 +30,7 @@ class UserModel
         $stmt->execute();
 
         return Mailer::mail($data['email'], $data['name'], $code);
+
     }
 
     public static function login($email, $password)

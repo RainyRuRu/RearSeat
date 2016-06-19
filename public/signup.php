@@ -20,7 +20,7 @@ $data = [
     'password' => $password,
     'name' => $name,
     'sex' => $sex,
-    'dapartment' => $department,
+    'department' => $department,
     'phone' => $phone
 ];
 
