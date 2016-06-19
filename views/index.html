@@ -6,7 +6,9 @@
     <body onload="onload(&quot;{{ user['id'] }}&quot;, &quot;{{ message }}&quot;)">
         {% include 'navigation_bar.html' %}
         <div id="title_filed">
-            <p id="slogan">Share Seat, Make Friends</p>
+            <center>
+                <p id="slogan">Share Seat, Make Friends</p>
+            </center>
             <div class="row">
                 <form name="search_form" onsubmit="return goSearch()">
                     <div class="col-lg-5 col-lg-offset-3">
@@ -57,7 +59,11 @@
                             <li class="list-group-item list_item" onclick="goTheRequestPage({{ item['seat_id'] }})">
                                 <div class="row">
                                     <div class="col-lg-2">
+                                        {% if item['photo'] == null %}
                                         <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
+                                        {% else %}
+                                        <img src='img/no_photo.jpg' height="60">
+                                        {% endif %} 
                                     </div>
                                     <div class="col-lg-10 list_item_text">
                                         {{item["go_time"] }}</br>
@@ -84,7 +90,11 @@
                             <li class="list-group-item list_item" onclick="goTheRequestPage({{ item['seat_id'] }})">
                                 <div class="row">
                                     <div class="col-lg-2">
+                                        {% if item['photo'] == null %}
                                         <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
+                                        {% else %}
+                                        <img src='img/no_photo.jpg' height="60">
+                                        {% endif %}                    
                                     </div>
                                     <div class="col-lg-10 list_item_text">
                                         {{item["go_time"] }}</br>
