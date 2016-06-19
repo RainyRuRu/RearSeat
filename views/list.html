@@ -45,7 +45,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="col-lg-2"><center>分享人</center></th>
+                            {% if page == "find" or page == "searchFind" %}
+                            <th class="col-lg-2"><center>需求者</center></th>
+                            {% else %}
+                            <th class="col-lg-2"><center>分享者</center></th>
+                            {% endif %} 
                             <th class="col-lg-2"><center>出發時間</center></th>
                             <th class="col-lg-2"><center>出發地</center></th>
                             <th class="col-lg-2"><center>目的地</center></th>
@@ -55,16 +59,16 @@
                     </thead>
                     <tbody>
                         {% for item in data %}
-                        <tr class='clickable-row' data-href='request.php?id={{ item["id"] }}'>
+                        <tr class='clickable-row' data-href='request.php?id={{ item["seat_id"] }}'>
                             <td>
                                 <center>
-                                    {% if item['poster_photo'] == null %}
+                                    {% if item['photo'] == null %}
                                     <img src='img/no_photo.jpg' height="60">
                                     {% else %}
-                                    <img src='{{ "data:image/png;base64, " ~ item["poster_photo"] }}' height="60">
+                                    <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
                                     {% endif %}
                                     <div>
-                                        {{ item["poster"] }}
+                                        {{ item["name"] }}
                                     </div>
                                 </center>
                             </td>
