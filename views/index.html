@@ -3,7 +3,7 @@
     <head>
         {% include 'header.html' with {'jsfile' : 'index.js', 'cssfile' : 'index.css'} %}
     </head>
-    <body onload="thisIs('{{ user_id }}');">
+    <body onload="thisIs({{ user['id'] }});">
         {% include 'navigation_bar.html' %}
         <div id="title_filed">
             <p id="slogan">Share Seat, Make Friends</p>
@@ -51,35 +51,21 @@
                     </div>
                     <div class="list_content">
                         <ul class="list-group">
+                            {% for item in find %}
                             <li class="list-group-item list_item">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <img src="/img/test.jpg" height="60">
+                                        <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
                                     </div>
                                     <div class="col-lg-10 list_item_text">
-                                        2016/06/19 14:00</br>
-                                        高師大燕巢校區
+                                        {{item["go_time"] }}</br>
+                                        {{item["starting_point"] }}
                                         <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                        高師大和平校區
+                                        {{item["end_point"] }}
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item list_item">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <img src="/img/test.jpg" height="60">
-                                    </div>
-                                    <div class="col-lg-10 list_item_text">
-                                        2016/06/19 14:00</br>
-                                        高師大燕巢校區
-                                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                        高師大和平校區
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -92,11 +78,21 @@
                     </div>
                     <div class="list_content">
                         <ul class="list-group">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
+                            {% for item in share %}
+                            <li class="list-group-item list_item">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <img src='{{ "data:image/png;base64, " ~ item["photo"] }}' height="60">
+                                    </div>
+                                    <div class="col-lg-10 list_item_text">
+                                        {{item["go_time"] }}</br>
+                                        {{item["starting_point"] }}
+                                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                        {{item["end_point"] }}
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
