@@ -25,13 +25,15 @@ class SeatModel{
 
     public static function searchSeatByKeyword($request, $keyword, $page = null) {
         $db = DB::connect();
-        $sql = "select * from seat Where request = :request and starting_point LIKE '% :keyword %'' or end_point LIKE '% :keyword %' order by post_time asc";
+        $keyword = '%' . $keyword . '%';
+        $sql = "select * from seat Where request = :request and starting_point LIKE :keyword or end_point LIKE :keyword order by post_time asc";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":request", $request);
+        $stmt->bindParam(":keyword", $keyword);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+        
         $result = static::splitData($result, $page);
 
         return $result;
