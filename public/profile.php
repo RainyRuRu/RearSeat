@@ -57,7 +57,7 @@ function showProfile($profile_id)
     $good = ScoreModel::searchScores($profile_id, 2);
     $soso = ScoreModel::searchScores($profile_id, 1);
     $bad = ScoreModel::searchScores($profile_id, 0);
-
+    $profile["photo"] = base64_encode($profile["photo"]);
     $data = [
         "profile" => $profile,
         "score" => [

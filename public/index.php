@@ -34,7 +34,7 @@ foreach ($shareSeats as $seat) {
     }
     $user = UserModel::searchUser($seat['reporter']);
     $seat['photo'] = base64_encode($user['photo']);
-    array_push($finds, $seat);
+    array_push($shares, $seat);
     $count++;
 }
 

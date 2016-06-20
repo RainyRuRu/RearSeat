@@ -9,7 +9,9 @@
             <div class="row mainContainer">
                 <div class="col-lg-3">
                     <div>
-                        <img id="user_icon" src='{{ "data:image/png;base64, " ~ user["photo"] }}' height="250">
+                        <a href="profile.php?id={{data['profile']['user_id']}}">
+                            <img id="user_icon" src='{{ "data:image/png;base64, " ~ data["profile"]["photo"] }}' height="250">
+                        </a>
                     </div>
                     <div class="row">
                         <div class="col-lg-8 userName">

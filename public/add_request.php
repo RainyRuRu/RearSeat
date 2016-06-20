@@ -20,13 +20,13 @@ $reward = $_POST['reward'];
 $description = $_POST['description'];
         
 $data = [
-    'user_id' = $user_id,
-    'request' = $request,
-    'starting_point' = $starting_point,
-    'end_point' = $end_point;
-    'go_time' = $go_time;
-    'reward' = $reward;
-    'description' = $description;
+    'reporter' => $user_id,
+    'request' => $request,
+    'starting_point' => $starting_point,
+    'end_point' => $end_point,
+    'go_time' => $go_time,
+    'reward' => $reward,
+    'description' => $description
 ];
 
 SeatModel::insertSeat($data);

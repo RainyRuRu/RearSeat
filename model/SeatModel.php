@@ -105,8 +105,8 @@ class SeatModel{
     public static function insertSeat($data) {
         $db = DB::connect();
 
-        $sql = "Insert into seat(reporter, request, starting_point, end_point, go_time, reward, status, description)".
-            "value(:reporter, :request, :starting_point, :end_point, :go_time, :reward, :status, :description)";
+        $sql = "Insert into seat(reporter, request, starting_point, end_point, go_time, reward, description)".
+            "value(:reporter, :request, :starting_point, :end_point, :go_time, :reward, :description)";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":reporter", $data['reporter']);
@@ -115,7 +115,6 @@ class SeatModel{
         $stmt->bindParam(":end_point", $data['end_point']);
         $stmt->bindParam(":go_time", $data['go_time']);
         $stmt->bindParam(":reward", $data['reward']);
-        $stmt->bindParam(":status", 0);
         $stmt->bindParam(":description", $data['description']);
 
         $stmt->execute();
